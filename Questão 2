@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int numerodeMeses;
+    double aporte, taxadeRetorno, montante;
+
+    scanf("%d %lf %lf", &numerodeMeses, &aporte, &taxadeRetorno);
+
+    if (numerodeMeses < 1 || numerodeMeses > 240 || aporte < 1 || aporte > 5000 || taxadeRetorno < 0.01 || taxadeRetorno > 0.2) {
+        printf("Valores fora dos limites permitidos.\n");
+        return 1;
+    }
+
+    montante = 0;
+    for (int i = 1; i <= numerodeMeses; i++) {
+        montante += aporte;
+        montante *= (1 + taxadeRetorno);
+
+        printf("Montante ao fim do mes %d: R$ %.2lf\n", i, montante);
+    }
+
+    return 0;
+}
